@@ -1,0 +1,138 @@
+<html>
+<head>
+ 	<link rel="stylesheet" href="css/list.css">
+ 	<script src="script/list.js"></script>
+ 	<title>AS Properties List</title>
+
+
+</head>
+
+<body>
+	<div class="background"></div>   
+
+	<nav>
+	<ul>
+	    <!--<li><a href="#blank"; style="opacity: 0;">____________________________________</a></li>     /* easy to adjust margin for the nav bar */ -->
+	    <li><a href="adminList.html">Home</a></li>
+	    <!--<li><a href="https://weather.com/weather/hourbyhour/l/USNY0507:1:US" target="_blank">Weather</a></li>
+	    <li><a href="http://www.accuweather.com/en/us/new-york-ny/10007/hourly-weather-forecast/349727" target="iframe_a">AccuWeather</a></li> -->
+	    <li><a href="addproperty.html">Add New Property</a></li>
+	    <li><a href="salespersonMaintenance.html">Salespersons List Maintenance</a></li>
+	    <li><a href="usersMaintenance.html">Users List Maintenance</a></li>
+
+	    <li class="dropdown">
+		<a href="javascript:void(0)" class="dropbtn" style="color:yellow;" id="selectCity">Select City</a>
+		<div class="dropdown-content">
+			<a href="#" onclick="selectClick('selectCity', 'Select City')">Select City</a>
+			<a href="#" onclick="selectClick('selectCity', 'city: Bronx')">Bronx</a>
+			<a href="#" onclick="selectClick('selectCity', 'city: New York City')">New York City</a>
+			<a href="#" onclick="selectClick('selectCity', 'city: Sunnyside')">Sunnyside</a>
+			<a href="#" onclick="selectClick('selectCity', 'city: Woodside')">Woodside</a>
+		</div>
+	    </li>
+
+	    <li class="dropdown">
+		<a href="javascript:void(0)" class="dropbtn" style="color:yellow;" id="selectState">Select State</a>
+		<div class="dropdown-content">
+			<a href="#" onclick="selectClick('selectState', 'Select State')">Select State</a>
+			<a href="#" onclick="selectClick('selectState', 'state: CA')">CA</a>
+			<a href="#" onclick="selectClick('selectState', 'state: NY')">NY</a>	
+			<a href="#" onclick="selectClick('selectState', 'state: WA')">WA</a>				
+		</div>
+	    </li>
+	  	
+	  	<li class="dropdown">
+		<a href="javascript:void(0)" class="dropbtn" style="color:powderblue;">Order by Posted Date</a>
+		<div class="dropdown-content">
+			<a href="Bookmarks_Jobs.html" target="iframe_a">Order by Posted Date</a>
+			<a href="Bookmarks_Learning.html" target="iframe_a">Order by Price</a>
+		</div>
+	    </li>
+
+	    <li><a href="#logout">Login/Logout</a></li>
+	</ul>
+    </nav>
+
+
+		<div class="flexbox">
+			<img src="../images/P000002.jpg" alt="Property Photo">
+			<div class="text">
+				<h2>Asking Price: $5,000 (rental)</h2>
+				<p>Address: 6886 Broadway New York, NY 10174</p>
+			</div>
+			<div class="flexbutton">
+				<a href="#" class="button">Detail</a>
+				<a href="#" class="button">Inactivate</a>
+				<a href="#" class="button">Showing</a>			
+			</div> 
+		</div>
+
+		<div class="flexbox">
+			<img src="../images/P000003.jpg" alt="Property Photo">
+			<div class="text">
+				<h2>Asking Price: $1,000,000</h2>
+				<p>Address: 1 Times Square New York, NY 10002</p>
+			</div>
+			<div class="flexbutton">
+				<a href="#" class="button">Detail</a>
+				<a href="#" class="button">Inactivate</a>
+				<a href="#" class="button">Showing</a>			
+			</div>  
+		</div>
+
+		<div class="flexbox">
+			<img src="../images/P000002.jpg" alt="Property Photo">
+			<div class="text">
+				<h2>Asking Price: $2,300 (rental)</h2>
+				<p>Address: 6886 Broadway New York, NY 10174</p>
+			</div>
+			<div class="flexbutton">
+				<a href="#" class="button">Detail</a>
+				<a href="#" class="button">Inactivate</a>
+				<a href="#" class="button">Showing</a>			
+			</div> 
+		</div>
+
+		<div class="flexbox">
+			<img src="../images/P000003.jpg" alt="Property Photo">
+			<div class="text">
+				<h2>Asking Price: $1,000,000</h2>
+				<p>Address: 1 Times Square New York, NY 10002</p>
+			</div>
+			<div class="flexbutton">
+				<a href="#" class="button">Detail</a>
+				<a href="#" class="button">Inactivate</a>
+				<a href="#" class="button">Showing</a>			
+			</div>  
+		</div>
+
+		<div class="flexbox">
+			<img src="../images/P000002.jpg" alt="Property Photo">
+			<div class="text">
+				<h2>Asking Price: $50,000</h2>
+				<p>Address: 6886 Broadway New York, NY 10174</p>
+			</div>
+			<div class="flexbutton">
+				<a href="#" class="button">Detail</a>
+				<a href="#" class="button">Inactivate</a>
+				<a href="#" class="button">Showing</a>			
+			</div> 
+		</div>
+
+		<div class="flexbox">
+			<img src="../images/P000003.jpg" alt="Property Photo">
+			<div class="text">
+				<h2>Asking Price: $1,000,000</h2>
+				<p>Address: 1 Times Square New York, NY 10002</p>
+			</div>
+			<div class="flexbutton">
+				<a href="#" class="button">Detail</a>
+				<a href="#" class="button">Inactivate</a>
+				<a href="#" class="button">Showing</a>			
+			</div>  
+		</div>		
+
+	<footer>Copyright &copy; 2018 AS Properties.  All rights reserved.</footer>
+
+</body>	
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+	<title>Add New Property</title>
+	<link type="text/css" rel="stylesheet" href="css/addproperty.css" />
+	<script src="script/addproperty.js"></script>
+</head>
+<body onload="initPage()"">
+	<div class="wrapper">
+		<h2>Add New Property</h2>
+		<form action="">
+			<label for="first-name">First Name</label>
+			<input type="text" id="first-name" name="first-name" required placeholder="First Name" />
+			<label for="last-name">Last Name</label>
+			<input type="text" id="last-name" name="last-name" required placeholder="Last Name" />
+			<label for="start-date">Start Date</label>
+			<input type="date" id="start-date" name="start-date" placeholder="Start Date" />
+			<label for="title">Title</label>
+			<select id="title" name="title">
+				<option value="">---Choose a title---</option>
+				<option value="1">President</option>
+				<option value="2">Vice President</option>
+				<option value="3">Treasurer</option>
+				<option value="4">Operations Manager</option>
+				<option value="5">Loan Manager</option>
+				<option value="6">Head Teller</option>
+				<option value="7">Teller</option>
+			</select>
+			<label for="branch">Branch</label>
+			<input type="text" id="branch" name="branch" required placeholder="Branch" />
+			<label for="dept">Dept.</label>
+			<select id="dept" name="dept">
+				<option value="">---Choose a department---</option>
+				<option value="1">Operations</option>
+				<option value="2">Loans</option>
+				<option value="3">Administration</option>
+				<option value="4">IT</option>
+			</select>
+			<label for="manager">Manager</label>
+			<input type="text" id="manager" name="manager" required placeholder="Manager" />
+			<input type="submit" id="submit-button" value="Add" />
+			<button onclick="goBack()"; style="float: right;">Go Back</button>
+		</form>
+	</div>
+	
+</body>
+</html>
