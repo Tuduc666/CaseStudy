@@ -8,7 +8,10 @@ function xcityClick(id, value) {
 function selectClick(id, value) {
    // document.getElementById("selectCity").inner = document.getElementById("selectCity1").value;   
    // document.getElementById("selectCity").innerHTML = city;  
-	document.getElementById(id).innerHTML = value; 
+	document.getElementById(id).innerHTML = value;
+	...request.set(id,value)..
+	..dispatcher.forward()...
+	
 }
 
 // function for back button
