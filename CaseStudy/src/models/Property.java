@@ -22,7 +22,7 @@ public class Property {       // join P_Property with P_Salesperson
 	private Date posted_date;       // Date datatype?????  import from java SQL?????
 	private String mls_number;
 	private Double asking_price;
-	private Double acceptance_price;
+	private Double accepting_price;
 	private String status;
 	private String photo_filename;
 	
@@ -141,10 +141,10 @@ public class Property {       // join P_Property with P_Salesperson
 		this.asking_price = asking_price;
 	}
 	public Double getAcceptance_price() {
-		return acceptance_price;
+		return accepting_price;
 	}
-	public void setAcceptance_price(Double acceptance_price) {
-		this.acceptance_price = acceptance_price;
+	public void setAcceptance_price(Double accepting_price) {
+		this.accepting_price = accepting_price;
 	}
 	public String getStatus() {
 		return status;

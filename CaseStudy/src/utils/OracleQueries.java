@@ -34,12 +34,12 @@ public class OracleQueries {
 	
 	public final static String ADDPROPERTY = "insert into p_property "
 			+ "(address1,address2,city_name,state_code,zipcode,owner_name,owner_phone,sales_type,property_type,"
-			+ "bedrooms,salesperson_id,posted_date,mls_number,asking_price,acceptance_price,status,photo_filename) "
+			+ "bedrooms,salesperson_id,posted_date,mls_number,asking_price,accepting_price,status,photo_filename) "
 			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	public final static String UPDATEPROPERTY = "update p_property "
 			+ "set address1 = ?, address2 = ?, city_name = ?, state_code = ?, zipcode = ?, owner_name = ?, "
 			+ "owner_phone = ?, sales_type = ?, property_type = ?, bedrooms = ?, salesperson_id = ?, "
-			+ "posted_date = ?, mls_number = ?, asking_price = ?, acceptance_price = ?, status = ?, photo_filename = ? "
+			+ "posted_date = ?, mls_number = ?, asking_price = ?, accepting_price = ?, status = ?, photo_filename = ? "
 			+ "where property_id = ?";
 	
 	public final static String GETSHOWING = "select * from p_requestshowing " 

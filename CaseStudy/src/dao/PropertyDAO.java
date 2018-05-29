@@ -165,7 +165,7 @@ public class PropertyDAO {
 	public int addProperty(String address1, String address2, String city_name, String state_code, String zipcode,
 			String owner_name, String owner_phone, String sales_type, String property_type,
 			Integer bedrooms, Integer salesperson_id, Date posted_date, String mls_number,
-			Double asking_price, Double acceptance_price, String status, String filename) throws IOException, SQLException {
+			Double asking_price, Double accepting_price, String status, String filename) throws IOException, SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		String[] COL = {"property_id"};    // use to get automatic sequence number for field "attending_id"   
@@ -189,7 +189,7 @@ public class PropertyDAO {
 			stmt.setDate(12, posted_date);
 			stmt.setString(13, mls_number);
 			stmt.setDouble(14, asking_price);
-			stmt.setDouble(15, acceptance_price);
+			stmt.setDouble(15, accepting_price);
 			stmt.setString(16, status);
 			stmt.setString(17, filename);
 			stmt.executeUpdate();
@@ -216,7 +216,7 @@ public class PropertyDAO {
 	public boolean updateProperty(Integer property_id, String address1, String address2, String city_name, String state_code, String zipcode,
 			String owner_name, String owner_phone, String sales_type, String property_type,
 			Integer bedrooms, Integer salesperson_id, Date posted_date, String mls_number,
-			Double asking_price, Double acceptance_price, String status, String filename) throws IOException, SQLException {
+			Double asking_price, Double accepting_price, String status, String filename) throws IOException, SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		Integer result = null;           
@@ -238,7 +238,7 @@ public class PropertyDAO {
 			stmt.setDate(12, posted_date);               // date updated correctly?????
 			stmt.setString(13, mls_number);
 			stmt.setDouble(14, asking_price);
-			stmt.setDouble(15, acceptance_price);
+			stmt.setDouble(15, accepting_price);
 			stmt.setString(16, status);
 			stmt.setString(17, filename);
 			stmt.setInt(18, property_id);          
