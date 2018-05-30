@@ -58,7 +58,7 @@
 		</div>
 	    </li>
 	    <li><a href="updateuser.html">Update Profile</a></li>
-	    <li><a href="login.html">Login/Logout</a></li>
+	    <li><a href="logout.html">Logout</a></li>
 	</ul>
     </nav>
 

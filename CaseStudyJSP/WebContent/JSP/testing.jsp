@@ -6,20 +6,24 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
-	</head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
 <body>
 <%
-out.print("Hello...");
+out.print("Hello...<br>");
 UserDAO userDAO = new UserDAO();
 List<User> l = new ArrayList<User>();
-
 l = userDAO.getUserList();
-for(User u : l)  
-out.print("hellotoo");
- %>
+if (l.isEmpty()){out.print("empty");}   // check if list is empty
+for(User u : l){ 
+	out.print("hellotoo_");
+	out.print(u.getUser_name());
+	out.print("<br>");
+}
+out.print("Goodbye...");
 
+%>
 </body>
 </html>

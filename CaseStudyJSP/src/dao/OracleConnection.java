@@ -12,11 +12,11 @@ public class OracleConnection {
 		Connection conn = null;
 //		final Properties prop = new Properties();
 //		final InputStream inputStream = OracleConnection.class.getClassLoader()
-//			.getResourceAsStream("CaseStudy/resources/db.properties");
+//			.getResourceAsStream("/resources/db.properties");   // packagename/classname        ... do not include projectname, it is included in the properties settings 
 //		prop.load(inputStream);
-		Class.forName("oracle.jdbc.driver.OracleDriver");  // changed
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", 
-				"ANONYMOUS", "Tamduc1166");
+				"TamJava", "Tampass");
 		return conn;
 	}
 }

@@ -12,7 +12,6 @@ import models.User;
 import utils.OracleQueries;
 
 public class UserDAO {
-	
 //	public User getUserById(String id) throws IOException, SQLException 	{
 //		User user = null;
 //		Connection conn = null;

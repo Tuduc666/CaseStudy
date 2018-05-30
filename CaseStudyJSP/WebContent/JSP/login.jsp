@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page import="dao.*" %>
+<%@ page import="models.*" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -12,29 +14,18 @@
 <%
 	String message = null;
 	if(request.getParameter("login") != null){
-		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String userName = request.getParameter("userName");
-		String gender = request.getParameter("gender");
-		String[] hobbies = request.getParameterValues("hobbies");
-		String hob="";
-		for(String s : hobbies){
-			hob = hob + s + " "; 
-		}
-		String country = request.getParameter("country");
 		if(password == ""){
 			message = "Invalid Password";
 		} 
 		else {
-			session.setAttribute("firstName", firstName);
-			session.setAttribute("lastName", lastName);
+			// validate user/password with user table, if valid load user bean
+			
+			
+			session.setAttribute("email", email);
 			session.setAttribute("password", password);
-			session.setAttribute("userName", userName);
-			session.setAttribute("gender", gender);
-			session.setAttribute("hobbies", hob);
-			session.setAttribute("country", country);
-			response.sendRedirect("success.jsp");	
+			response.sendRedirect("userlist.jsp?city=0,state=0,order=0");	
 		}
 	}
 %>
