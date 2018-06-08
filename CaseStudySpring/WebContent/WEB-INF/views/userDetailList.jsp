@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>User Detail List</title>
+<link rel="stylesheet" href="<spring:url value="CSS/list.css" />">
 </head>
 <body>
 	<h1>User Detail List</h1>
