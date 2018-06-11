@@ -2,7 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>  
 <!DOCTYPE html>
-<%@ page import="models.*" %>
+<%@ page import="models.*,dao.*" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -23,37 +25,58 @@
 
 	<nav>
 	<ul>
-	    <li><a href="userList.html">Home</a></li>
+<!-- HOME -->
+	    <li><a href="userDetailList?city=<%=city%>&state=<%=state%>&order=<%=order%>">Home</a></li>
 		
+<!-- CITY -->
 	    <li class="dropdown">
-		<a href="javascript:void(0)" class="dropbtn" style="color:yellow;" id="selectCity">Select City</a>
+		<a class="dropbtn" style="color:yellow;" id="selectCity">City:<%=city%></a>
 		<div class="dropdown-content">
-			<a href="#" onclick="selectClick('selectCity', 'Select City')">Select City</a>
-			<a href="userlist.jsp?city=1,state=0" onclick="selectClick('selectCity', 'city: Bronx')">Bronx</a>   //request.getParameter("city");
-			<a href="#" onclick="selectClick('selectCity', 'city: New York City')">New York City</a>
-			<a href="#" onclick="selectClick('selectCity', 'city: Sunnyside')">Sunnyside</a>
-			<a href="#" onclick="selectClick('selectCity', 'city: Woodside')">Woodside</a>
+			<a href="userDetailList?city=all&state=<%=state%>&order=<%=order%>">City:All</a>
+			<%
+				CityDAO cityDAO= new CityDAO();		
+				List<City> lc = new ArrayList<City>();
+				lc = cityDAO.getCityList();
+				for (City c : lc){
+					out.print("<a href=\"userDetailList?city=" + c.getName() + "&state="); %><%=state%>		
+				<% 	out.print("&order="); %><%=order%>		
+				<% 	out.print("\">" + c.getName() + "</a>"); %>
+				<% 	}  %> 
+			<!-- ***************  This is the string we're building above    **************************     -->		
+			<!-- ***************  <a href="userDetailList?city=Bronx&state=<%=state%>&order=<%=order%>">Bronx</a>   -->
 		</div>
 	    </li>
 
+<!-- STATE -->
 	    <li class="dropdown">
-		<a href="javascript:void(0)" class="dropbtn" style="color:yellow;" id="selectState">Select State</a>
+		<a class="dropbtn" style="color:yellow;" id="selectState">State:<%=state%></a>
 		<div class="dropdown-content">
-			<a href="#" onclick="selectClick('selectState', 'Select State')">Select State</a>
-			<a href="userlist.jsp?city=1,state=1" onclick="selectClick('selectState', 'state: CA')">CA</a>
-			<a href="#" onclick="selectClick('selectState', 'state: NY')">NY</a>	
-			<a href="#" onclick="selectClick('selectState', 'state: WA')">WA</a>				
+			<a href="userDetailList?city=<%=city%>&state=all&order=<%=order%>">State:All</a>
+			<%
+				StateDAO stateDAO= new StateDAO();		
+				List<State> l = new ArrayList<State>();
+				l = stateDAO.getStateList();
+				for (State s : l){
+					out.print("<a href=\"userDetailList?city=");%><%=city%>		
+			<% 	out.print("&state=" + s.getCode() + "&order="); %><%=order%>		
+			<% 	out.print("\">" + s.getCode() + "</a>"); %>
+			<% 	}  %> 
+			<!-- ***************  This is the string we're building above    **************************     -->				
+			<!-- ***************  <a href="userDetailList?city=<%=city%>&state=CA&order=<%=order%>">CA</a>   -->				
 		</div>
-	    </li>
+	    </li>	
 
-	
+
+<!-- ORDER BY -->
 	  	<li class="dropdown">
-		<a href="javascript:void(0)" class="dropbtn" style="color:powderblue;" id="orderBy">Order by: Posted Date</a>
+		<a class="dropbtn" style="color:powderblue;" id="orderBy">Order by:<%=order%></a>
 		<div class="dropdown-content">
-			<a href="#" onclick="selectClick('orderBy', 'Order by: Posted Date')">Order by Posted Date</a>
-			<a href="#" onclick="selectClick('orderBy', 'Order by: Price')">Order by Price</a>
+			<a href="userDetailList?city=<%=city%>&state=<%=state%>&order=date">Order by Posted Date</a>
+			<a href="userDetailList?city=<%=city%>&state=<%=state%>&order=price">Order by Price</a>
 		</div>
 	    </li>
+	    
+<!-- OTHER -->
 	    <li><a href="updateuser.html">Update Profile</a></li>
 	    <li><a href="logout.html">Logout</a></li>
 	</ul>
@@ -137,7 +160,20 @@
 				<a href="#" class="button">Showing</a>			
 			</div>  
 		</div>		
+		
+	
+	<a href="/CaseStudySpring/" >TESTING</a>
+	
+<%
+// 	StateDAO stateDAO= new StateDAO();		
+// 	List<State> l = new ArrayList<State>();
+// 	l = stateDAO.getStateList();
+// 	for (State s : l){
+// 		out.print(s.getCode());
+// 	}
+%>
 
+				
 	<footer>Copyright &copy; 2018 AS Properties.  All rights reserved.</footer>
 		
 	</body>

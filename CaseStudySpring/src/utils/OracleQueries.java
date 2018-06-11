@@ -83,8 +83,9 @@ public class OracleQueries {
 	public final static String ISVALIDUSER = "select * from p_user " 
 			+ "where email = ? and user_password = ? ";
 	
+	public final static String GETALLSTATES = "select * from p_state ";
 	
-	
+	public final static String GETALLCITIES = "select * from p_city ";
 	
 	
 //	public final static String GETALLINSTRUCTORS = "select * from instructor";
