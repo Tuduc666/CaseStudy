@@ -25,37 +25,13 @@ public class IndexController {
 		return mav;
 	}
 	
-	// testdata - TamD@yahoo.com  adminp, lee@gmail.com  leep
-//		@RequestMapping(value="/validateLogin", method = RequestMethod.POST)
-//		public ModelAndView user_info(
-//				@RequestParam("email") String email,
-//				@RequestParam("password") String password) throws IOException, SQLException {
-//			
-//			String returnPage = "userDetailList";
-//			ModelAndView mav = null;
-//			
-//			User u = null; u = new User();
-//			UserDAO uDAO = null; uDAO = new UserDAO();
-//			u = uDAO.isValidUser(email, password);
-//			
-//			if(u==null) returnPage = "index";
-//			else {
-//				// HERE!!!!  declare user as a sessionAttribute to be used by all pages
-//				if(u.getUser_type().equals("Admin")) returnPage = "adminDetailList";
-//				else returnPage = "userDetailList";			
-//			}
-//			
-//			mav = new ModelAndView(returnPage);  
-//			return mav;
-//		}
-	
 		// testdata - TamD@yahoo.com  adminp, lee@gmail.com  leep
 		@PostMapping("/validateLogin")
 		public ModelAndView user_info(
 				@RequestParam("email") String email,
 				@RequestParam("password") String password) throws IOException, SQLException {
 			
-			String returnPage = "userDetailList";
+			String returnPage = "login";
 			ModelAndView mav = null;
 			
 			User u = null; u = new User();
@@ -64,13 +40,15 @@ public class IndexController {
 			
 			if(u==null) returnPage = "login";
 			else {
-				// if(u.getUser_type().equals("Admin")) returnPage = "adminDetailList";
 				if(u.getUser_type().equals("Admin")) returnPage = "adminDetailList";
-				else returnPage = "index";			
+				else returnPage = "userDetailList";
 			}
 			
 			mav = new ModelAndView(returnPage);  
 			mav.addObject("user", u);           // the returnPage will make the user a session variable
+			mav.addObject("city", "all");           
+			mav.addObject("state", "all");           
+			mav.addObject("order", "date");           
 			return mav;
 		}
 	}

@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>       
+<!DOCTYPE html>
+<%@ page import="models.*" %>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
- 		<link rel="stylesheet" href="<spring:url value="CSS/index.css" />">
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">	
+ 		<link rel="stylesheet" href="<spring:url value="/CSS/index.css" />">
  		<title>AS Properties</title>
 	</head>
+<%
+	User u = (User) request.getAttribute("user");
+	session.setAttribute("user", u);
+%>
 <body>
 	<!-- 	<div id="bkg"></div>  -->                                        <!-- fading out background image -->
 		<div style="display:flex;justify-content: space-between;">    <!-- needed this line to fit the 3 items in the header of the page -->
@@ -27,7 +33,7 @@
 
 	</div>
 
-		<iframe src="userList.html"> 
+	<%=request.getAttribute("iframe") %>
 
 </body>
 </html>
