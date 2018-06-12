@@ -44,11 +44,12 @@ public class PropertyDAO {
 				property.setAsking_price(result.getDouble(15));
 				property.setAcceptance_price(result.getDouble(16));
 				property.setStatus(result.getString(17));
-				// property.setSalesperon_id(result.getInt(18));    // skipping salesperson_id from p_salesperson file
-				property.setSalesperson_name(result.getString(19));
-				property.setSalesperson_phone(result.getString(20));
-				property.setSalesperson_email(result.getString(21));
-				property.setSalesperson_comm(result.getFloat(22));			
+				property.setPhoto_filename(result.getString(18));
+				// property.setSalesperon_id(result.getInt(19));    // skipping salesperson_id from p_salesperson file
+				property.setSalesperson_name(result.getString(20));
+				property.setSalesperson_phone(result.getString(21));
+				property.setSalesperson_email(result.getString(22));
+				property.setSalesperson_comm(result.getFloat(23));			
 			}
 			
 		} catch (ClassNotFoundException e) {
@@ -82,11 +83,11 @@ public class PropertyDAO {
 			
 			// order by posted date
 			if(!order.equals("price")){
-				if(!city.equals("ALL")) {
+				if(!city.equals("all")) {
 					stmt = conn.prepareStatement(OracleQueries.GETPROPERTYBYCITY);
 					stmt.setString(1, city);
 				}
-				else if(!state.equals("ALL")) {
+				else if(!state.equals("all")) {
 					stmt = conn.prepareStatement(OracleQueries.GETPROPERTYBYSTATE);
 					stmt.setString(1, state);
 				}
@@ -97,11 +98,11 @@ public class PropertyDAO {
 			}
 			// order by price
 			else{
-				if(!city.equals("ALL")) {
+				if(!city.equals("all")) {
 					stmt = conn.prepareStatement(OracleQueries.GETPROPERTYBYCITYP);
 					stmt.setString(1, city);
 				}
-				else if(!state.equals("ALL")) {
+				else if(!state.equals("all")) {
 					stmt = conn.prepareStatement(OracleQueries.GETPROPERTYBYSTATEP);
 					stmt.setString(1, state);
 				}
@@ -131,13 +132,14 @@ public class PropertyDAO {
 				property.setAsking_price(result.getDouble(15));
 				property.setAcceptance_price(result.getDouble(16));
 				property.setStatus(result.getString(17));
-				// property.setSalesperon_id(result.getInt(18));    // skipping salesperson_id from p_salesperson file
-				property.setSalesperson_name(result.getString(19));
-				property.setSalesperson_phone(result.getString(20));
-				property.setSalesperson_email(result.getString(21));
-				property.setSalesperson_comm(result.getFloat(22));		
+				property.setPhoto_filename(result.getString(18));
+				// property.setSalesperon_id(result.getInt(19));    // skipping salesperson_id from p_salesperson file
+				property.setSalesperson_name(result.getString(20));
+				property.setSalesperson_phone(result.getString(21));
+				property.setSalesperson_email(result.getString(22));
+				property.setSalesperson_comm(result.getFloat(23));		
 				
-				if(!city.equals("ALL") && !state.equals("ALL")) {    // selecting both city and state
+				if(!city.equals("all") && !state.equals("all")) {    // selecting both city and state
 					if(state.equals(property.getState())) l.add(property);
 				}
 				else l.add(property);
