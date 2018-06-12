@@ -77,32 +77,35 @@ public class OracleQueries {
 			+ "where user_id = ?";
 	public final static String DELETEUSER = "delete from p_user "
 			+ "where user_id = ?";
+	public final static String ISVALIDUSER = "select * from p_user " 
+			+ "where email = ? and user_password = ? ";
+	
+	public final static String GETALLSTATES = "select * from p_state ";
+	
+	public final static String GETALLCITIES = "select * from p_city ";
 	
 	
 	
 	
-	
-	
-	public final static String GETALLINSTRUCTORS = "select * from instructor";
-	public final static String GETINSTRUCTORBYEMAIL = "select * from instructor "
-			+ "where email = ?";	
-	public final static String GETALLCOURSES = "select * from course";
-	public final static String GETCOURSESBYINSTRUCTOR = "select c.COURSE_ID,c.COURSE_NAME,c.MINIMUN_GPA from TEACHING t " 
-			+ "join COURSE c on t.COURSE_ID = c.COURSE_ID "  
-			+ "where t.INSTRUCTOR_ID = ?";
-
-	public final static String GETINSTRUCTORSCOURSES = "select c.COURSE_NAME,c.MINIMUN_GPA,"
-			+ "i.FULL_NAME,i.EMAIL from TEACHING t " 
-			+ "join COURSE c   on t.COURSE_ID = c.COURSE_ID "    
-			+ "join INSTRUCTOR i on t.INSTRUCTOR_ID = i.INSTRUCTOR_ID ";  
-	
-	public final static String GETSTUDENTCOURSES = "select c.COURSE_NAME,"
-			+ "i.FULL_NAME,i.EMAIL from ATTENDING a " 
-			+ "join COURSE c   on a.COURSE_ID = c.COURSE_ID "  
-			+ "join TEACHING t on a.COURSE_ID = t.COURSE_ID "  
-			+ "join INSTRUCTOR i on t.INSTRUCTOR_ID = i.INSTRUCTOR_ID "   
-			+ "where a.STUDENT_ID = ?";
+//	public final static String GETALLINSTRUCTORS = "select * from instructor";
+//	public final static String GETINSTRUCTORBYEMAIL = "select * from instructor "
+//			+ "where email = ?";	
+//	public final static String GETALLCOURSES = "select * from course";
+//	public final static String GETCOURSESBYINSTRUCTOR = "select c.COURSE_ID,c.COURSE_NAME,c.MINIMUN_GPA from TEACHING t " 
+//			+ "join COURSE c on t.COURSE_ID = c.COURSE_ID "  
+//			+ "where t.INSTRUCTOR_ID = ?";
+//
+//	public final static String GETINSTRUCTORSCOURSES = "select c.COURSE_NAME,c.MINIMUN_GPA,"
+//			+ "i.FULL_NAME,i.EMAIL from TEACHING t " 
+//			+ "join COURSE c   on t.COURSE_ID = c.COURSE_ID "    
+//			+ "join INSTRUCTOR i on t.INSTRUCTOR_ID = i.INSTRUCTOR_ID ";  
+//	
+//	public final static String GETSTUDENTCOURSES = "select c.COURSE_NAME,"
+//			+ "i.FULL_NAME,i.EMAIL from ATTENDING a " 
+//			+ "join COURSE c   on a.COURSE_ID = c.COURSE_ID "  
+//			+ "join TEACHING t on a.COURSE_ID = t.COURSE_ID "  
+//			+ "join INSTRUCTOR i on t.INSTRUCTOR_ID = i.INSTRUCTOR_ID "   
+//			+ "where a.STUDENT_ID = ?";
 
 	
 }
-
