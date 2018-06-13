@@ -4,12 +4,12 @@ body {
 
 h1 { 
     text-align: center;
-    letter-spacing:5px;       /* stretches out the h1 */
+    letter-spacing:5vw;       /* stretches out the h1 */
     margin: 0;
     /*text-shadow: 3px 3px 5px red;        /* add a shadow to the text in the header  */
     color: white;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-    font-size: 7vw;
+    font-size: 3vw;
 }
   
 form {

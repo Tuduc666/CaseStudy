@@ -52,7 +52,7 @@ public class IndexController {
 		mav.addObject("order", "date");           
 		return mav;
 	}
-		
+			
 	@GetMapping("/userDetailList")
 	public ModelAndView userDetailList(
 			@RequestParam("city") String city,
@@ -62,6 +62,12 @@ public class IndexController {
 		mav.addObject("city", city);           
 		mav.addObject("state", state);           
 		mav.addObject("order", order);  
+		return mav;
+	}
+	
+	@GetMapping("/userUpdateProfile")
+	public ModelAndView userUpdateProfile() {	
+		ModelAndView mav = new ModelAndView("userUpdateProfile");
 		return mav;
 	}
 }
