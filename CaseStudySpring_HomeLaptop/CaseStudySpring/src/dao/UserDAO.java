@@ -35,7 +35,6 @@ public class UserDAO {
 //				user.setPhone(result.getString(8));
 //				user.setEmail(result.getString(9));		
 //				user.setUser_type(result.getString(10));		
-//				user.setUser_password(result.getString(11));		
 //			}
 //			
 //		} catch (ClassNotFoundException e) {
@@ -80,7 +79,6 @@ public class UserDAO {
 				user.setPhone(result.getString(8));
 				user.setEmail(result.getString(9));		
 				user.setUser_type(result.getString(10));
-				user.setUser_password(result.getString(11));	
 				l.add(user);
 			}
 			
@@ -104,7 +102,7 @@ public class UserDAO {
 	}
 	
 	public int addUser(String user_name, String address1, String address2, String city, String state, String zip,
-			String phone, String email, String user_type, String user_password) throws IOException, SQLException {
+			String phone, String email, String user_type, String password) throws IOException, SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		String[] COL = {"user_id"};        // use to get automatic sequence number for field "attending_id"   
@@ -123,7 +121,7 @@ public class UserDAO {
 			stmt.setString(7, phone);
 			stmt.setString(8, email);
 			stmt.setString(9, user_type);
-			stmt.setString(10, user_password);
+			stmt.setString(10, password);
 			stmt.executeUpdate();
 			// get the value of generated key
 			result = stmt.getGeneratedKeys();
@@ -146,7 +144,7 @@ public class UserDAO {
 	}
 
 	public boolean updateUser(Integer user_id, String user_name, String address1, String address2, String city, String state, String zip,
-			String phone, String email, String user_type, String user_password) throws IOException, SQLException {
+			String phone, String email, String user_type, String password) throws IOException, SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		Integer result = null;           
@@ -163,7 +161,7 @@ public class UserDAO {
 			stmt.setString(7, phone);
 			stmt.setString(8, email);
 			stmt.setString(9, user_type);
-			stmt.setString(10, user_password);
+			stmt.setString(10, password);
 			stmt.setInt(11, user_id);          
 			result = stmt.executeUpdate();
 						
@@ -206,7 +204,7 @@ public class UserDAO {
 		}
 		return result > 0;                    
 	}
-	
+
 	public User isValidUser(String email, String password) throws IOException, SQLException 	{
 		User user = null;
 		Connection conn = null;

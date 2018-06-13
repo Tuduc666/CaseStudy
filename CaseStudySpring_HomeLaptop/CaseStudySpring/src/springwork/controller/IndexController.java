@@ -20,14 +20,14 @@ import models.User;
 @Controller
 public class IndexController {
 
-	@RequestMapping("/")
+	@RequestMapping("/")      // call login view
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView("login");
 		return mav;
 	}
 	
 	// testdata - TamD@yahoo.com  adminp, lee@gmail.com  leep
-	@PostMapping("/validateLogin")
+	@PostMapping("/validateLogin")      // called from login view, validate login, call detail list
 	public ModelAndView user_info(
 			@RequestParam("email") String email,
 			@RequestParam("password") String password) throws IOException, SQLException {
@@ -37,7 +37,7 @@ public class IndexController {
 		
 		User u = null; u = new User();
 		UserDAO uDAO = null; uDAO = new UserDAO();
-		u = uDAO.isValidUser(email, password);
+		u = uDAO.isValidUser(email, password); 
 		
 		if(u==null) returnPage = "login";
 		else {
@@ -52,8 +52,8 @@ public class IndexController {
 		mav.addObject("order", "date");           
 		return mav;
 	}
-		
-	@GetMapping("/userDetailList")
+			
+	@GetMapping("/userDetailList")          // called from userDetailList menu bar selection, call userDetailList
 	public ModelAndView userDetailList(
 			@RequestParam("city") String city,
 			@RequestParam("state") String state,
@@ -62,6 +62,32 @@ public class IndexController {
 		mav.addObject("city", city);           
 		mav.addObject("state", state);           
 		mav.addObject("order", order);  
+		return mav;
+	}
+	
+	@GetMapping("/userUpdateProfile")   // called from userDetailList menu bar update profile button, call userUpdateProfile view
+	public ModelAndView userUpdateProfile() {	
+		ModelAndView mav = new ModelAndView("userUpdateProfile");
+		return mav;
+	}
+	
+	@PostMapping("/userUpdateSQL")      // called from userUpdateProfile view, update SQL, call userDetailList
+	public ModelAndView userUpdateSQL(@ModelAttribute User u) throws IOException, SQLException {	
+		UserDAO userDAO = new UserDAO();
+//		Integer userid = u.getUser_id();
+//		String name = u.getUser_name();
+//		String type = u.getUser_type();
+//		String pass = u.getUser_password();
+//		userDAO.updateUser(3, "Bruce Lee", "404 Lex", "", "Rego Park", "NY", 
+//				"11374", "666-666-6666", "lee@gmail.com", "Customer", "leep");
+		userDAO.updateUser(u.getUser_id(), u.getUser_name(), u.getAddress1(), u.getAddress2(), u.getCity(), u.getState(), 
+				u.getZip(), u.getPhone(), u.getEmail(), u.getUser_type(), u.getUser_password());
+		
+		ModelAndView mav = new ModelAndView("userDetailList");
+		mav.addObject("user", u);          
+		mav.addObject("city", "all");           
+		mav.addObject("state", "all");           
+		mav.addObject("order", "date");    
 		return mav;
 	}
 }

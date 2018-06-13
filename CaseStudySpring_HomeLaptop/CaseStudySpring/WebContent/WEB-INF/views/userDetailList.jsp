@@ -79,8 +79,9 @@
 		</div>
 	    </li>
 	    
+<!-- UPDATE PROFILE -->
+	    <li><a href="userUpdateProfile">Update Profile</a></li>
 <!-- OTHER -->
-	    <li><a href="updateuser.html">Update Profile</a></li>
 	    <li><a href="logout.html">Logout</a></li>
 	</ul>
     </nav>
