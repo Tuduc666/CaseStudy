@@ -8,16 +8,16 @@ public class OracleQueries {
 	
 	public final static String GETPROPERTYBYSTATE = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.state_code = ? and p.status = 'Active' order by posted_date";
+			+ "where p.state_code = ? and p.status = 'Active' order by posted_date desc";
 	public final static String GETPROPERTYBYCITY = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.city_name = ? and p.status = 'Active' order by posted_date";
+			+ "where p.city_name = ? and p.status = 'Active' order by posted_date desc";
 	public final static String GETALLPROPERTIESACTIVE = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.status = 'Active' order by posted_date";
+			+ "where p.status = 'Active' order by posted_date desc";
 	public final static String GETALLPROPERTIES = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "order by posted_date";
+			+ "order by posted_date desc";
 	
 	public final static String GETPROPERTYBYSTATEP = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
@@ -42,7 +42,6 @@ public class OracleQueries {
 			+ "posted_date = ?, mls_number = ?, asking_price = ?, accepting_price = ?, status = ?, photo_filename = ? "
 			+ "where property_id = ?";
 	
-	
 	public final static String GETSHOWING = "select * from p_requestshowing " 
 			+ "where user_id = ? and property_id = ?";
 	public final static String ADDSHOWING = "insert into p_requestshowing "
@@ -53,7 +52,6 @@ public class OracleQueries {
 			+ "where user_id = ? and property_id = ?";
 	public final static String DELETESHOWING = "delete from p_requestshowing "
 			+ "where user_id = ? and property_id = ?";
-	
 	
 	public final static String GETSALESPERSONBYID = "select * from p_salesperson " 
 			+ "where salesperson_id = ?";
@@ -67,16 +65,15 @@ public class OracleQueries {
 	public final static String DELETESALESPERSON = "delete from p_salesperson "
 			+ "where salesperson_id = ?";
 	
-	
 	public final static String GETUSERBYID = "select * from p_user " 
 			+ "where user_id = ?";
 	public final static String GETALLUSERS = "select * from p_user ";
 	public final static String ADDUSER = "insert into p_user "
-			+ "(user_name,address1,address2,city_name,state_code,zipcode,phone,email,user_type,user_password) "
-			+ "values(?,?,?,?,?,?,?,?,?,?)";
+			+ "(user_name,address1,address2,city_name,state_code,zipcode,phone,email,user_type) "
+			+ "values(?,?,?,?,?,?,?,?,?)";
 	public final static String UPDATEUSER = "update p_user "
 			+ "set user_name=?, address1=?, address2=?, city_name=?, state_code=?, zipcode=?,"
-			+ "phone = ?, email = ?, user_type = ?, user_password = ? "
+			+ "phone = ?, email = ?, user_type = ? "
 			+ "where user_id = ?";
 	public final static String DELETEUSER = "delete from p_user "
 			+ "where user_id = ?";
@@ -86,6 +83,8 @@ public class OracleQueries {
 	public final static String GETALLSTATES = "select * from p_state ";
 	
 	public final static String GETALLCITIES = "select * from p_city ";
+	
+	
 	
 	
 //	public final static String GETALLINSTRUCTORS = "select * from instructor";
