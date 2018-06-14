@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.SalespersonDAO;
 import dao.UserDAO;
+import models.Salesperson;
 import models.User;
 
 @Controller
@@ -138,6 +140,38 @@ public class IndexController {
 	@GetMapping("/salesDetailList")   // called from adminDetailList menu bar, call salesDetailList view
 	public ModelAndView salesDetailList() {	
 		ModelAndView mav = new ModelAndView("salesDetailList");
+		return mav;
+	}
+	
+	@GetMapping("/addSalesperson")   // called from adminDetailList menu bar, call salesDetailList view
+	public ModelAndView addSalesperson() {	
+		ModelAndView mav = new ModelAndView("addSalesperson");
+		return mav;
+	}
+	
+	@PostMapping("/addSalesSQL")      // called from addSalesperson view, insert into SQL, call salesDetailList
+	public ModelAndView addSalesSQL(@ModelAttribute Salesperson s) throws IOException, SQLException {	
+		SalespersonDAO sDAO = new SalespersonDAO();
+		
+//		Integer userid = u.getUser_id();
+		String name = s.getName();
+		String phone = s.getPhone();
+		String email = s.getEmail();
+		Double comm = s.getComm();
+
+		
+		sDAO.addSalesperson(s.getName(), s.getPhone(), s.getEmail(), s.getComm());
+		// sDAO.addSalesperson("aaa", "222", "aaa@gmail.com", (double) 2.25);
+		
+		ModelAndView mav = new ModelAndView("salesDetailList");   
+		return mav;
+	}
+	
+	@GetMapping("/updateSalesperson")   // called from userDetailList menu bar update profile button, call updateSalesperson view
+	public ModelAndView updateSalesperson() {
+		// here need to pass in salesperson id and retrieve salesperson here
+		// pass it to updateSalesperson
+		ModelAndView mav = new ModelAndView("updateSalesperson");
 		return mav;
 	}
 }

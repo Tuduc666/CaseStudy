@@ -30,7 +30,7 @@ public class SalespersonDAO {
 				salesperson.setName(result.getString(2));
 				salesperson.setPhone(result.getString(3));
 				salesperson.setEmail(result.getString(4));
-				salesperson.setComm(result.getFloat(5));			
+				salesperson.setComm(result.getDouble(5));			
 			}
 			
 		} catch (ClassNotFoundException e) {
@@ -69,7 +69,7 @@ public class SalespersonDAO {
 				salesperson.setName(result.getString(2));
 				salesperson.setPhone(result.getString(3));
 				salesperson.setEmail(result.getString(4));
-				salesperson.setComm(result.getFloat(5));		
+				salesperson.setComm(result.getDouble(5));		
 				l.add(salesperson);
 			}
 			
@@ -92,7 +92,7 @@ public class SalespersonDAO {
 		return l;
 	}
 	
-	public int addSalesperson(String name, String phone, String email, Float comm) throws IOException, SQLException {
+	public int addSalesperson(String name, String phone, String email, Double comm) throws IOException, SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		String[] COL = {"salesperson_id"};    // use to get automatic sequence number for field "attending_id"   
@@ -105,7 +105,7 @@ public class SalespersonDAO {
 			stmt.setString(1, name);
 			stmt.setString(2, phone);
 			stmt.setString(3, email);
-			stmt.setFloat(4, comm);
+			stmt.setDouble(4, comm);
 			stmt.executeUpdate();
 			// get the value of generated key
 			result = stmt.getGeneratedKeys();
@@ -128,7 +128,7 @@ public class SalespersonDAO {
 	}
 
 	public boolean updateSalesperson(Integer salesperson_id, String name, String phone, String email, 
-															Float comm) throws IOException, SQLException {
+															Double comm) throws IOException, SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		Integer result = null;           
@@ -139,7 +139,7 @@ public class SalespersonDAO {
 			stmt.setString(1, name);
 			stmt.setString(2, phone);
 			stmt.setString(3, email);
-			stmt.setFloat(4, comm);
+			stmt.setDouble(4, comm);
 			stmt.setInt(5, salesperson_id);          
 			result = stmt.executeUpdate();
 						

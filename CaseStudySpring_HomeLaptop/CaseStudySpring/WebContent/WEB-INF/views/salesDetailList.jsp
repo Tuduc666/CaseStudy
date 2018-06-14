@@ -12,15 +12,7 @@
 		<link rel="stylesheet" href="<spring:url value="/CSS/ulist.css" />">
 		<title>Salespersons Detail List</title>
 	</head>
-<%
-	User u = (User) request.getAttribute("user");        // only pass in user from the login page
-	if(u != null) session.setAttribute("userkey", u);    // if user is not passes in, then use userkey
-	u = (User) session.getAttribute("userkey");
-	
-	String city = (String) request.getAttribute("city");
-	String state = (String) request.getAttribute("state");
-	String order = (String) request.getAttribute("order");
-%>
+
 	<body>
 			<h1>AS Properties</h1>
 			
@@ -30,7 +22,10 @@
 	<ul>
 <!-- HOME -->
 	    <li><a href="adminDetailList?city=all&state=all&order=date">Home</a></li>
-		    
+
+<!-- Add Salesperson -->
+	    <li><a href="addSalesperson">Add Salesperson</a></li>
+	    		    
 <!-- logout -->
 	    <li><a href="logout">Logout</a></li>
 	</ul>
@@ -39,22 +34,20 @@
 
 <!-- DETAIL LIST -->
 <%
- 	PropertyDAO propertyDAO= new PropertyDAO();		
- 	List<Property> pl = new ArrayList<Property>();
- 	Boolean admin = u.getUser_type().equals("Admin");
- 	pl = propertyDAO.getPropertyList(city, state, order, admin);
- 	for (Property s : pl){ %>
+ 	SalespersonDAO salespersonDAO= new SalespersonDAO();		
+ 	List<Salesperson> l = new ArrayList<Salesperson>();
+ 	l = salespersonDAO.getSalespersonList();
+ 	for (Salesperson s : l){ %>
  		<div class="flexbox">
-		<img src="IMAGES/<%=s.getPhoto_filename()%>" alt="Property Photo">
 		<div class="text">
-			<h2>Asking Price: $<%=s.getAsking_price()%></h2>
-			<p><%=s.getAddress1()%></p>
-			<p><%=s.getCity()%>,&nbsp<%=s.getState()%>&nbsp<%=s.getZip()%></p>
+			<p>ID-<%=s.getId()%></p>
+			<p><%=s.getName()%></p>
+			<p><%=s.getPhone()%></p>
+			<p><%=s.getEmail()%></p>
 		</div>
 		<div class="flexbutton">
-			<a href="#" class="button">Detail</a>
-			<a href="#" class="button">Inactivate</a>
-			<a href="#" class="button">Showing</a>			
+			<a href="updateSalesperson" class="button">Update</a>			
+			<a href="deleteSalesperson" class="button">Delete</a>
 		</div>  
 	</div>
  <%	}  %>

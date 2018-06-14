@@ -10,7 +10,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="<spring:url value="/CSS/updateUser.css" />">
-		<title>Login</title>
+		<title>Update User Profile</title>
 	</head>
 <%
 	User u = (User) session.getAttribute("userkey"); // two different ways to retrieve the information

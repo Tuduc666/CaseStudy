@@ -8,29 +8,29 @@ public class OracleQueries {
 	
 	public final static String GETPROPERTYBYSTATE = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.state_code = ? and p.status = 'Active' order by posted_date desc";
+			+ "where p.state_code = ? and p.status = 'Active' order by p.posted_date desc";
 	public final static String GETPROPERTYBYCITY = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.city_name = ? and p.status = 'Active' order by posted_date desc";
+			+ "where p.city_name = ? and p.status = 'Active' order by p.posted_date desc";
 	public final static String GETALLPROPERTIESACTIVE = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.status = 'Active' order by posted_date desc";
+			+ "where p.status = 'Active' order by p.posted_date desc";
 	public final static String GETALLPROPERTIES = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "order by posted_date desc";
+			+ "order by p.posted_date desc";
 	
 	public final static String GETPROPERTYBYSTATEP = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.state_code = ? and p.status = 'Active' order by asking_price";
+			+ "where p.state_code = ? and p.status = 'Active' order by p.asking_price";
 	public final static String GETPROPERTYBYCITYP = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.city_name = ? and p.status = 'Active' order by asking_price";
+			+ "where p.city_name = ? and p.status = 'Active' order by p.asking_price";
 	public final static String GETALLPROPERTIESACTIVEP = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "where p.status = 'Active' order by asking_price";
+			+ "where p.status = 'Active' order by p.asking_price";
 	public final static String GETALLPROPERTIESP = "select * from p_property p "
 			+ "join p_salesperson s on p.salesperson_id = s.salesperson_id "  
-			+ "order by asking_price";
+			+ "order by p.asking_price";
 	
 	public final static String ADDPROPERTY = "insert into p_property "
 			+ "(address1,address2,city_name,state_code,zipcode,owner_name,owner_phone,sales_type,property_type,"
@@ -55,7 +55,7 @@ public class OracleQueries {
 	
 	public final static String GETSALESPERSONBYID = "select * from p_salesperson " 
 			+ "where salesperson_id = ?";
-	public final static String GETALLSALESPERSON = "select * from p_salesperson ";
+	public final static String GETALLSALESPERSON = "select * from p_salesperson order by salesperson_id ";
 	public final static String ADDSALESPERSON = "insert into p_salesperson "
 			+ "(salesperson_name,phone,email,commission) "
 			+ "values(?,?,?,?)";
