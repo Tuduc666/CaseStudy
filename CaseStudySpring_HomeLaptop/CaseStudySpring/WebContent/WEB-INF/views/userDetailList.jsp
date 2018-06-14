@@ -81,8 +81,9 @@
 	    
 <!-- UPDATE PROFILE -->
 	    <li><a href="userUpdateProfile">Update Profile</a></li>
-<!-- OTHER -->
-	    <li><a href="logout.html">Logout</a></li>
+	    
+<!-- logout -->
+	    <li><a href="logout">Logout</a></li>
 	</ul>
     </nav>
 

@@ -20,8 +20,14 @@ import models.User;
 @Controller
 public class IndexController {
 
-	@RequestMapping("/")      // call login view
+	@RequestMapping("/")      // call login view at the beginning
 	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView("login");
+		return mav;
+	}
+	
+	@RequestMapping("reLogin")      // call login view after logged out
+	public ModelAndView relogin() {
 		ModelAndView mav = new ModelAndView("login");
 		return mav;
 	}
@@ -89,5 +95,10 @@ public class IndexController {
 		mav.addObject("state", "all");           
 		mav.addObject("order", "date");    
 		return mav;
+	}
+	
+	@GetMapping("/logout")   // called from userDetailList menu bar logout button, call logout view
+	public String logout() {	
+		return "logout";
 	}
 }
