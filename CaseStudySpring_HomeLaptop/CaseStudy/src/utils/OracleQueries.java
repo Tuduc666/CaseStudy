@@ -55,7 +55,7 @@ public class OracleQueries {
 	
 	public final static String GETSALESPERSONBYID = "select * from p_salesperson " 
 			+ "where salesperson_id = ?";
-	public final static String GETALLSALESPERSON = "select * from p_salesperson ";
+	public final static String GETALLSALESPERSON = "select * from p_salesperson order by salesperson_id";
 	public final static String ADDSALESPERSON = "insert into p_salesperson "
 			+ "(salesperson_name,phone,email,commission) "
 			+ "values(?,?,?,?)";

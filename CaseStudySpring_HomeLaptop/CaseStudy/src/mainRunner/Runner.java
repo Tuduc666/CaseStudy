@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.PropertyDAO;
+import dao.SalespersonDAO;
 import dao.StateDAO;
 import dao.UserDAO;
 import models.Property;
@@ -22,9 +23,9 @@ public class Runner {
 //		for(User u : l) System.out.println(u.getUser_name());
 
 // update user details
-	 	UserDAO userDAO = new UserDAO();
-		userDAO.updateUser(3, "Bruce Lee", "404 Lex", "", "Rego Park", "NY", 
-				"11374", "666-666-6666", "lee@gmail.com", "Customer", "leep");
+//	 	UserDAO userDAO = new UserDAO();
+//		userDAO.updateUser(3, "Bruce Lee", "404 Lex", "", "Rego Park", "NY", 
+//				"11374", "666-666-6666", "lee@gmail.com", "Customer", "leep");
 		
 // get state list
 //	 	StateDAO stateDAO= new StateDAO();		
@@ -42,6 +43,10 @@ public class Runner {
 //	 	for (Property s : l){
 //	 		System.out.println(s.getProperty_id());  
 //	 	}
+		
+// update user details
+		SalespersonDAO sDAO = new SalespersonDAO();
+		sDAO.addSalesperson("Max Uduc", "9172047707", "max@gmail.com", (double) 2);
 		
 
 	 	
