@@ -71,9 +71,27 @@ public class IndexController {
 		return mav;
 	}
 	
+	@GetMapping("/adminDetailList")          // called from adminDetailList menu bar selection, call adminDetailList
+	public ModelAndView adminDetailList(
+			@RequestParam("city") String city,
+			@RequestParam("state") String state,
+			@RequestParam("order") String order) {
+		ModelAndView mav = new ModelAndView("adminDetailList");
+		mav.addObject("city", city);           
+		mav.addObject("state", state);           
+		mav.addObject("order", order);  
+		return mav;
+	}
+	
 	@GetMapping("/userUpdateProfile")   // called from userDetailList menu bar update profile button, call userUpdateProfile view
 	public ModelAndView userUpdateProfile() {	
 		ModelAndView mav = new ModelAndView("userUpdateProfile");
+		return mav;
+	}
+	
+	@GetMapping("/adminUpdateProfile")   // called from userDetailList menu bar update profile button, call userUpdateProfile view
+	public ModelAndView adminUpdateProfile() {	
+		ModelAndView mav = new ModelAndView("adminUpdateProfile");
 		return mav;
 	}
 	
@@ -97,8 +115,29 @@ public class IndexController {
 		return mav;
 	}
 	
+	@PostMapping("/adminUpdateSQL")      // called from userUpdateProfile view, update SQL, call userDetailList
+	public ModelAndView adminUpdateSQL(@ModelAttribute User u) throws IOException, SQLException {	
+		UserDAO userDAO = new UserDAO();
+		userDAO.updateUser(u.getUser_id(), u.getUser_name(), u.getAddress1(), u.getAddress2(), u.getCity(), u.getState(), 
+				u.getZip(), u.getPhone(), u.getEmail(), u.getUser_type(), u.getUser_password());
+		
+		ModelAndView mav = new ModelAndView("adminDetailList");
+		mav.addObject("user", u);          
+		mav.addObject("city", "all");           
+		mav.addObject("state", "all");           
+		mav.addObject("order", "date");    
+		return mav;
+	}
+	
 	@GetMapping("/logout")   // called from userDetailList menu bar logout button, call logout view
 	public String logout() {	
 		return "logout";
+	}
+	
+	//---------- SALESPERSONS MAINTENANCE -------------------------------
+	@GetMapping("/salesDetailList")   // called from adminDetailList menu bar, call salesDetailList view
+	public ModelAndView salesDetailList() {	
+		ModelAndView mav = new ModelAndView("salesDetailList");
+		return mav;
 	}
 }
