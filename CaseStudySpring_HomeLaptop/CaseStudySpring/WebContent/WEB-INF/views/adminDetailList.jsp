@@ -79,13 +79,13 @@
 		</div>
 	    </li>
 	    
-<!-- UPDATE PROFILE -->
-	    <li><a href="adminUpdateProfile">Update Profile</a></li>
-	    
 <!-- OTHER  -->
-	    <li><a href="addProperty.html">Add New Property</a></li>
+	    <li><a href="addProperty">Add Property</a></li>
 	    <li><a href="salesDetailList">Salespersons</a></li>   
 	    <!------- li><a href="usersMaintenance.html">Users List Maintenance</a></li>                -->
+	    
+<!-- UPDATE PROFILE -->
+	    <li><a href="adminUpdateProfile">Update Profile</a></li>
 	    
 <!-- logout -->
 	    <li><a href="logout">Logout</a></li>
@@ -104,13 +104,13 @@
 		<img src="IMAGES/<%=s.getPhoto_filename()%>" alt="Property Photo">
 		<div class="text">
 			<h2>Asking Price: $<%=s.getAsking_price()%></h2>
+			<p>(<%=s.getSales_type()%>)</p>
 			<p><%=s.getAddress1()%></p>
 			<p><%=s.getCity()%>,&nbsp<%=s.getState()%>&nbsp<%=s.getZip()%></p>
 		</div>
 		<div class="flexbutton">
-			<a href="#" class="button">Detail</a>
-			<a href="#" class="button">Inactivate</a>
-			<a href="#" class="button">Showing</a>			
+			<a href="updateProperty?id=<%=s.getProperty_id()%>" class="button">Update</a>
+			<a href="inactivateProperty?id=<%=s.getProperty_id()%>" class="button">Inactivate</a>		
 		</div>  
 	</div>
  <%	}  %>

@@ -14,7 +14,7 @@ import utils.OracleQueries;
 
 public class PropertyDAO {
 	
-	public Property getPropertyById(String id) throws IOException, SQLException 	{
+	public Property getPropertyById(Integer id) throws IOException, SQLException 	{
 		Property property = null;
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -23,7 +23,7 @@ public class PropertyDAO {
 		try {
 			conn = OracleConnection.getConnection();
 			stmt = conn.prepareStatement(OracleQueries.GETPROPERTYBYID);
-			stmt.setString(1, id);
+			stmt.setInt(1, id);
 			result = stmt.executeQuery();
 			if(result.next()) {
 				property = new Property();

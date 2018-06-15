@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.PropertyDAO;
 import dao.SalespersonDAO;
 import dao.UserDAO;
+import models.Property;
 import models.Salesperson;
 import models.User;
 
@@ -143,7 +145,7 @@ public class IndexController {
 		return mav;
 	}
 	
-	@GetMapping("/addSalesperson")   // called from adminDetailList menu bar, call salesDetailList view
+	@GetMapping("/addSalesperson")   // called from salesDetailList menu bar, call salesDetailList view
 	public ModelAndView addSalesperson() {	
 		ModelAndView mav = new ModelAndView("addSalesperson");
 		return mav;
@@ -153,11 +155,10 @@ public class IndexController {
 	public ModelAndView addSalesSQL(@ModelAttribute Salesperson s) throws IOException, SQLException {	
 		SalespersonDAO sDAO = new SalespersonDAO();
 		
-//		Integer userid = u.getUser_id();
-		String name = s.getName();
-		String phone = s.getPhone();
-		String email = s.getEmail();
-		Double comm = s.getComm();
+//		String name = s.getName();
+//		String phone = s.getPhone();
+//		String email = s.getEmail();
+//		Double comm = s.getComm();
 
 		
 		sDAO.addSalesperson(s.getName(), s.getPhone(), s.getEmail(), s.getComm());
@@ -167,11 +168,108 @@ public class IndexController {
 		return mav;
 	}
 	
-	@GetMapping("/updateSalesperson")   // called from userDetailList menu bar update profile button, call updateSalesperson view
-	public ModelAndView updateSalesperson() {
-		// here need to pass in salesperson id and retrieve salesperson here
-		// pass it to updateSalesperson
+	@GetMapping("/updateSalesperson")   // called from salesDetailList detail line button, call updateSalesperson view
+	public ModelAndView updateSalesperson(@RequestParam("id") Integer id) throws IOException, SQLException {
+		SalespersonDAO sDAO = new SalespersonDAO();
+		Salesperson s = new Salesperson();
+		s = sDAO.getSalespersonById(id);
+		
 		ModelAndView mav = new ModelAndView("updateSalesperson");
+		mav.addObject("salesperson", s); 
+		return mav;
+	}
+	
+	@PostMapping("/updateSalesSQL")      // called from updateSalesperson view, update SQL, call salesDetailList
+	public ModelAndView updateSalesSQL(@ModelAttribute Salesperson s) throws IOException, SQLException {	
+		SalespersonDAO sDAO = new SalespersonDAO();
+		
+//		Integer id = s.getId();
+//		String name = s.getName();
+//		String phone = s.getPhone();
+//		String email = s.getEmail();
+//		Double comm = s.getComm();
+
+		sDAO.updateSalesperson(s.getId(), s.getName(), s.getPhone(), s.getEmail(), s.getComm());
+		
+		ModelAndView mav = new ModelAndView("salesDetailList");   
+		return mav;
+	}
+	
+	@GetMapping("/deleteSalesperson")   // called from salesDetailList detail line button, delete record, return to salesDetailList view
+	public String deleteSalesperson(@RequestParam("id") Integer id) throws IOException, SQLException {
+		SalespersonDAO sDAO = new SalespersonDAO();
+		sDAO.deleteSalesperson(id);
+		
+		return "salesDetailList";
+	}
+	
+//---------- PROPERTIES MAINTENANCE -------------------------------
+//	@GetMapping("/propertyDetailList")   // called from adminDetailList menu bar, call propertyDetailList view
+//	public ModelAndView propertyDetailList() {	
+//		ModelAndView mav = new ModelAndView("propertyDetailList");
+//		return mav;
+//	}
+	
+	@GetMapping("/addProperty")   // called from propertyDetailList menu bar, call propertyDetailList view
+	public ModelAndView addProperty() {	
+		ModelAndView mav = new ModelAndView("addProperty");
+		return mav;
+	}
+	
+	@PostMapping("/addPropertySQL")      // called from addProperty view, insert into SQL, call propertyDetailList
+	public ModelAndView addPropertySQL(@ModelAttribute Property p) throws IOException, SQLException {	
+		PropertyDAO pDAO = new PropertyDAO();
+		
+//		String name = s.getName();
+//		String phone = s.getPhone();
+//		String email = s.getEmail();
+//		Double comm = s.getComm();
+
+		pDAO.addProperty(p.getAddress1(), p.getAddress2(), p.getCity(), p.getState(), p.getZip(), p.getOwner_name(), 
+				          p.getOwner_phone(), p.getSales_type(), p.getProperty_type(), p.getBedrooms(), p.getSalesperon_id(), 
+				          p.getPosted_date(), p.getMls_number(), p.getAsking_price(), p.getAcceptance_price(), 
+				          p.getStatus(), p.getPhoto_filename());
+		// pDAO.addSalesperson(s.getName(), s.getPhone(), s.getEmail(), s.getComm());
+		// sDAO.addSalesperson("aaa", "222", "aaa@gmail.com", (double) 2.25);
+		
+		ModelAndView mav = new ModelAndView("adminDetailList");  
+		mav.addObject("city", "all");           
+		mav.addObject("state", "all");           
+		mav.addObject("order", "date");   
+		return mav;
+	}
+	
+	@GetMapping("/updateProperty")   // called from adminDetailList detail line button, call updateProperty view
+	public ModelAndView updateProperty(@RequestParam("id") Integer id) throws IOException, SQLException {
+		PropertyDAO pDAO = new PropertyDAO();
+		Property p = new Property();
+		p = pDAO.getPropertyById(id);
+		
+		ModelAndView mav = new ModelAndView("updateProperty");
+		mav.addObject("property", p); 
+		return mav;
+	}
+	
+	@PostMapping("/updatePropertySQL")      // called from updateProperty view, update p_property table, call adminDetailList
+	public ModelAndView updatePropertySQL(@ModelAttribute Property p) throws IOException, SQLException {	
+		PropertyDAO pDAO = new PropertyDAO();
+		
+//		Integer id = s.getId();
+//		String name = s.getName();
+//		String phone = s.getPhone();
+//		String email = s.getEmail();
+//		Double comm = s.getComm();
+
+		pDAO.updateProperty(p.getProperty_id(), p.getAddress1(), p.getAddress2(), p.getCity(), p.getState(), p.getZip(), p.getOwner_name(), 
+				          p.getOwner_phone(), p.getSales_type(), p.getProperty_type(), p.getBedrooms(), p.getSalesperon_id(), 
+				          p.getPosted_date(), p.getMls_number(), p.getAsking_price(), p.getAcceptance_price(), 
+				          p.getStatus(), p.getPhoto_filename());
+		// sDAO.updateSalesperson(s.getId(), s.getName(), s.getPhone(), s.getEmail(), s.getComm());
+		
+		ModelAndView mav = new ModelAndView("adminDetailList");  
+		mav.addObject("city", "all");           
+		mav.addObject("state", "all");           
+		mav.addObject("order", "date");   
 		return mav;
 	}
 }

@@ -10,7 +10,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="<spring:url value="/CSS/ulist.css" />">
-		<title>Salespersons Detail List</title>
+		<title>Properties Detail List</title>
 	</head>
 
 	<body>
@@ -24,7 +24,7 @@
 	    <li><a href="adminDetailList?city=all&state=all&order=date">Home</a></li>
 
 <!-- Add Salesperson -->
-	    <li><a href="addSalesperson">Add Salesperson</a></li>
+	    <li><a href="addProperty">Add Property</a></li>
 	    		    
 <!-- logout -->
 	    <li><a href="logout">Logout</a></li>

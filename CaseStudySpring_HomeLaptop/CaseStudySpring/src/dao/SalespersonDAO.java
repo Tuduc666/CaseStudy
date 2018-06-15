@@ -13,7 +13,7 @@ import utils.OracleQueries;
 
 public class SalespersonDAO {
 	
-	public Salesperson getSalespersonById(String id) throws IOException, SQLException 	{
+	public Salesperson getSalespersonById(Integer id) throws IOException, SQLException 	{
 		Salesperson salesperson = null;
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -22,7 +22,7 @@ public class SalespersonDAO {
 		try {
 			conn = OracleConnection.getConnection();
 			stmt = conn.prepareStatement(OracleQueries.GETSALESPERSONBYID);
-			stmt.setString(1, id);
+			stmt.setInt(1, id);
 			result = stmt.executeQuery();
 			if(result.next()) {
 				salesperson = new Salesperson();

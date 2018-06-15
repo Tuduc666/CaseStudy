@@ -19,7 +19,7 @@
 	                 // should always go with method #2 to be sure
 %>                                                   
 <body>
-	<h1>AS Properties Update User Info</h1>
+	<h1>ASP Update User Info</h1>
 	<div class="container">
 		<form action="userUpdateSQL" method="post">	
 		

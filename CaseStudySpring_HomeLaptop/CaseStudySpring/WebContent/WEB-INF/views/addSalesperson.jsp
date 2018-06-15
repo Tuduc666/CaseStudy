@@ -16,7 +16,7 @@
 
 %>                                                   
 <body>   <!-- NOTE: names below must match names in model class, not names in SQL table -->
-	<h1>AS Properties Add Salesperson</h1>
+	<h1>ASP Add Salesperson</h1>
 	<div class="container">
 		<form action="addSalesSQL" method="post">	
 		
