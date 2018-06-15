@@ -272,4 +272,17 @@ public class IndexController {
 		mav.addObject("order", "date");   
 		return mav;
 	}
+	
+	@GetMapping("/inactivateProperty")      // called from adminDetailList detail line, inactivate property record, return to adminDetailList
+	public ModelAndView inactivateProperty(@RequestParam("id") Integer id) throws IOException, SQLException {	
+		PropertyDAO pDAO = new PropertyDAO();
+		
+		pDAO.inactivateProperty(id);
+		
+		ModelAndView mav = new ModelAndView("adminDetailList");  
+		mav.addObject("city", "all");           
+		mav.addObject("state", "all");           
+		mav.addObject("order", "date");   
+		return mav;
+	}
 }

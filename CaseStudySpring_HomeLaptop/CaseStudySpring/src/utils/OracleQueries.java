@@ -41,6 +41,8 @@ public class OracleQueries {
 			+ "owner_phone = ?, sales_type = ?, property_type = ?, bedrooms = ?, salesperson_id = ?, "
 			+ "posted_date = ?, mls_number = ?, asking_price = ?, accepting_price = ?, status = ?, photo_filename = ? "
 			+ "where property_id = ?";
+	public final static String INACTIVATEPROPERTYBYID = "update p_property "
+			+ "set status = 'Inactive' where property_id = ?";
 	
 	public final static String GETSHOWING = "select * from p_requestshowing " 
 			+ "where user_id = ? and property_id = ?";

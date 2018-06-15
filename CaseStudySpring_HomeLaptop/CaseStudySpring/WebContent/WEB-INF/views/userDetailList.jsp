@@ -99,12 +99,12 @@
 		<img src="IMAGES/<%=s.getPhoto_filename()%>" alt="Property Photo">
 		<div class="text">
 			<h2>Asking Price: $<%=s.getAsking_price()%></h2>
+			<p>(<%=s.getSales_type()%>)</p>
 			<p><%=s.getAddress1()%></p>
 			<p><%=s.getCity()%>,&nbsp<%=s.getState()%>&nbsp<%=s.getZip()%></p>
 		</div>
 		<div class="flexbutton">
 			<a href="#" class="button">Detail</a>
-			<a href="#" class="button">Inactivate</a>
 			<a href="#" class="button">Showing</a>			
 		</div>  
 	</div>

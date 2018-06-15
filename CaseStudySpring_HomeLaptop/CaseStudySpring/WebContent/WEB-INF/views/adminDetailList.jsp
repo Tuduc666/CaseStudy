@@ -79,8 +79,11 @@
 		</div>
 	    </li>
 	    
-<!-- OTHER  -->
+<!-- ADD NEW PROPERTY  -->
 	    <li><a href="addProperty">Add Property</a></li>
+	    
+	    
+<!-- SALESPERSON MAINTENANCE  -->
 	    <li><a href="salesDetailList">Salespersons</a></li>   
 	    <!------- li><a href="usersMaintenance.html">Users List Maintenance</a></li>                -->
 	    
